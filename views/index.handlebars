@@ -1,0 +1,82 @@
+<style type="text/css">
+  .TFtable{
+    width:100%; 
+    border-collapse:collapse;
+
+
+  }
+  .TFtable td{ 
+    padding:0px; 
+  }
+  /* provide some minimal visual accomodation for IE8 and below */
+  .TFtable tr{
+    
+    
+  }
+  /*  Define the background color for all the ODD background rows  */
+  .TFtable tr:nth-child(odd){ 
+    background:RGB(00,00,00, .02) ;
+  }
+  /*  Define the background color for all the EVEN background rows  */
+  .TFtable tr:nth-child(even){
+    background: RGB(00,00,00, .05);
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark  static-top  " style="background-color: #0c1015">
+  <a class="navbar-brand active" style="margin-left: 100px">
+    <img src="logo@2x.png" width="75" height="43" alt="photo">
+    
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/image">Photos <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link " href="/" style="border-bottom: 2px solid white;
+  width:60px;">Video</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+      <div class="col-md-4">
+        <form action="/upload" method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+            <input type="hidden" name="type" class="form-control" value="video">
+          </div>
+          <div class="form-group" style="margin-top:30px">
+            <input type="text" name="title" class="form-control" placeholder="Title" style="height:50px; width:300px">
+          </div>
+          <div class="form-group">
+            <input type="file" name="blogimage" accept="video/*" style="height:50px"/>
+          </div>
+          <button type="submit" class="btn btn-info" style="background-color:black; width:300px; height:50px;">Upload</button>
+        </form>
+      </div>
+      <div class="col-md-8">
+      <h3 style ="margin-top:20px">Videos</h3>
+      <p style = "color: gray;">See all your uploded videos bellow</p>
+<table class="TFtable" style="text-align : center;">
+  
+  <tbody>
+  {{#each user}}
+    <tr style="height: 20px;">
+      
+      <td>{{this.title}}</td>
+      <td><button class="btn btn-link" onclick="window.open('{{this.path}}')" >view</button> </td>
+      <td><button class="btn btn-link" style="color: #000;" onclick="window.location.href = '{{this._id}}';" >Delete</button> </td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+</div>
+  </div>
+</div>

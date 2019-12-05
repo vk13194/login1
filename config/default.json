@@ -1,0 +1,4 @@
+{
+	"mongoURl": "mongodb://localhost:27017/public5"
+
+}
